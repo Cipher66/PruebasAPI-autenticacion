@@ -3,6 +3,7 @@
 namespace App\Exceptions;
 
 use Exception;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 
@@ -55,5 +56,8 @@ class Handler extends ExceptionHandler
             ],404);
         }
         return parent::render($request, $exception);
+    }
+    protected function unauthenticated($request, AuthenticationException $exception){
+
     }
 }

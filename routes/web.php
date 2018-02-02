@@ -16,3 +16,11 @@ Route::get('/', function () {
 });
 Route::post('register', 'Auth\RegisterController@register');
 Route::post('login', 'Auth\LoginController@login');
+
+Route::middleware('auth:api')->get('/user', function (Request $request){
+    return $request->user();
+});
+
+Auth::guard('api')->user();
+Auth::guard('api')->check();
+Auth::guard('api')->id();
